@@ -1,6 +1,6 @@
 ## Cross-Chain Messaging with Wormhole
 
-This project demonstrates how to send and receive cross-chain messages using the Wormhole protocol, specifically between Avalanche Fuji and Celo Alfajores testnets. The repository includes automated scripts for deploying contracts and sending messages across these chains.
+This project demonstrates how to send and receive _cross-chain messages_ using the **Wormhole** protocol, specifically between Avalanche Fuji and Celo Alfajores TestNets. The repository includes automated scripts for deploying contracts and sending messages across these chains.
 
 ### Features
 
@@ -12,7 +12,8 @@ This project demonstrates how to send and receive cross-chain messages using the
 
 - [Foundry installed](https://book.getfoundry.sh/getting-started/installation)
 - [Node.js and npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- An .env file with your private key:
+- You will need testnet tokens in both chains ([Fuji](https://faucets.chain.link/fuji) / [Alfajores](https://faucets.chain.link/celo-alfajores-testnet)) to complete transactions.
+- An `.env` file with your private key:
 
 ```bash
 PRIVATE_KEY=0x...
