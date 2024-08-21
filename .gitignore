@@ -16,3 +16,6 @@ docs/
 # Dotenv file
 .env
 node_modules/
+
+# ignore package-lock.json
+package-lock.json
