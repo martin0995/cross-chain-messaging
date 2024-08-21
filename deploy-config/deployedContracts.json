@@ -1,0 +1,10 @@
+{
+  "avalanche": {
+    "MessageSender": "",
+    "deployedAt": ""
+  },
+  "celo": {
+    "MessageReceiver": "",
+    "deployedAt": ""
+  }
+}
