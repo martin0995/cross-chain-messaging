@@ -13,14 +13,10 @@ contract MessageSender {
     }
 
     function quoteCrossChainCost(uint16 targetChain) public view returns (uint256 cost) {
-        (cost, ) = wormholeRelayer.quoteEVMDeliveryPrice(targetChain, 0, GAS_LIMIT);
+        (cost,) = wormholeRelayer.quoteEVMDeliveryPrice(targetChain, 0, GAS_LIMIT);
     }
 
-    function sendMessage(
-        uint16 targetChain, 
-        address targetAddress, 
-        string memory message
-    ) external payable {
+    function sendMessage(uint16 targetChain, address targetAddress, string memory message) external payable {
         uint256 cost = quoteCrossChainCost(targetChain); // Dynamically calculate the cross-chain cost
         require(msg.value >= cost, "Insufficient funds for cross-chain delivery");
 
@@ -33,4 +29,3 @@ contract MessageSender {
         );
     }
 }
-

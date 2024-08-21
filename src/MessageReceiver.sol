@@ -36,4 +36,3 @@ contract MessageReceiver is IWormholeReceiver {
         emit MessageReceived(message);
     }
 }
-
