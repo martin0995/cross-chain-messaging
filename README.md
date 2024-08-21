@@ -1,66 +1,15 @@
-## Foundry
+## Cross-Chain Messaging with Wormhole
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project demonstrates how to send and receive cross-chain messages using the Wormhole protocol, specifically between Avalanche Fuji and Celo Alfajores testnets. The repository includes automated scripts for deploying contracts and sending messages across these chains.
 
-Foundry consists of:
+### Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+ - Deploy smart contracts on Avalanche Fuji and Celo Alfajores TestNets
+ - Automatically manage contract addresses
+ - Send a cross-chain message from one chain to another using Wormhole
 
-## Documentation
+### Prerequisites
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- [Foundry installed](https://book.getfoundry.sh/getting-started/installation)
+- [Node.js and npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- An .env file with your private key:
