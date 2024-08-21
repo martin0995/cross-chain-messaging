@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol";
+import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import "lib/wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol";
 
-contract MessageSender is Ownable {
+contract MessageSender {
     IWormholeRelayer public wormholeRelayer;
     uint256 constant GAS_LIMIT = 50000; // Adjust the gas limit as needed
 
-    constructor(address _wormholeRelayer) Ownable() {
+    constructor(address _wormholeRelayer) {
         wormholeRelayer = IWormholeRelayer(_wormholeRelayer);
     }
 
@@ -20,7 +20,7 @@ contract MessageSender is Ownable {
         uint16 targetChain, 
         address targetAddress, 
         string memory message
-    ) external payable onlyOwner {
+    ) external payable {
         uint256 cost = quoteCrossChainCost(targetChain); // Dynamically calculate the cross-chain cost
         require(msg.value >= cost, "Insufficient funds for cross-chain delivery");
 
