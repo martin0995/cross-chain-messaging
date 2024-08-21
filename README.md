@@ -42,17 +42,19 @@ forge build
 
 4. Deploy contracts:
 
-Deploy the sender contract on Avalanche Fuji:
+**Deploy the sender contract on Avalanche Fuji:**
 
 ```bash
 npm run deploy:sender
 ```
+- You may see the respective contract deployed on the Fuji Explorer: https://testnet.snowtrace.io/
 
-Deploy the receiver contract on Celo Alfajores:
+**Deploy the receiver contract on Celo Alfajores:**
 
 ```bash
 npm run deploy:receiver
 ```
+- You may see the respective contract deployed on the Alfajores Explorer: https://explorer.celo.org/alfajores/
 
 5. Send Cross-Chain Message:
 
@@ -61,6 +63,7 @@ Send a message from Avalanche Fuji to Celo Alfajores:
 ```bash
 npm run send-message
 ```
+- You may check the transaction status on the Wormhole Explorer: https://wormholescan.io/#/?network=TESTNET
 
 ### How It Works
 
