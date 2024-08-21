@@ -1,3 +1,6 @@
+# Ignore lib files
+lib/
+
 # Compiler files
 cache/
 out/
