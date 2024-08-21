@@ -13,17 +13,39 @@ async function main() {
 	const celoChain = chains.chains.find((chain) => chain.description.includes('Celo Testnet'));
 
 	// Set up the provider and wallet
-	const provider = new ethers.providers.JsonRpcProvider(celoChain.rpc);
+	const provider = new ethers.JsonRpcProvider(celoChain.rpc);
 	const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
-	// Contract factory for MessageReceiver
-	const MessageReceiver = await ethers.getContractFactory('MessageReceiver', wallet);
+	// Load the ABI and bytecode of the MessageReceiver contract
+	const messageReceiverJson = JSON.parse(
+		fs.readFileSync(
+			path.resolve(__dirname, '../out/MessageReceiver.sol/MessageReceiver.json'),
+			'utf8'
+		)
+	);
+
+	const abi = messageReceiverJson.abi;
+	const bytecode = messageReceiverJson.bytecode;
+
+	// Create a ContractFactory for MessageReceiver
+	const MessageReceiver = new ethers.ContractFactory(abi, bytecode, wallet);
 
 	// Deploy the contract using the Wormhole Relayer address for Celo Testnet
 	const receiverContract = await MessageReceiver.deploy(celoChain.wormholeRelayer);
 	await receiverContract.waitForDeployment();
 
-	console.log('MessageReceiver deployed to:', receiverContract.address);
+	console.log('MessageReceiver deployed to:', receiverContract.target); // `target` is the contract address in ethers.js v6
+
+	// Update the deployedContracts.json file
+	const deployedContractsPath = path.resolve(__dirname, '../deploy-config/deployedContracts.json');
+	const deployedContracts = JSON.parse(fs.readFileSync(deployedContractsPath, 'utf8'));
+
+	deployedContracts.celo = {
+		MessageReceiver: receiverContract.target,
+		deployedAt: new Date().toISOString(),
+	};
+
+	fs.writeFileSync(deployedContractsPath, JSON.stringify(deployedContracts, null, 2));
 }
 
 main().catch((error) => {
