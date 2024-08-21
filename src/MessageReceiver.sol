@@ -1,16 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol";
-import "wormhole-solidity-sdk/src/interfaces/IWormholeReceiver.sol";
+import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import "lib/wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol";
+import "lib/wormhole-solidity-sdk/src/interfaces/IWormholeReceiver.sol";
 
-contract MessageReceiver is Ownable, IWormholeReceiver {
+contract MessageReceiver is IWormholeReceiver {
     IWormholeRelayer public wormholeRelayer;
 
     event MessageReceived(string message);
+    event SourceChainLogged(uint16 sourceChain);
 
-    constructor(address _wormholeRelayer) Ownable() {
+    constructor(address _wormholeRelayer) {
         wormholeRelayer = IWormholeRelayer(_wormholeRelayer);
     }
 
@@ -25,6 +26,11 @@ contract MessageReceiver is Ownable, IWormholeReceiver {
 
         // Decode the payload to extract the message and other details
         (string memory message) = abi.decode(payload, (string));
+
+        // Example use of sourceChain for logging
+        if (sourceChain != 0) {
+            emit SourceChainLogged(sourceChain);
+        }
 
         // Emit an event with the received message
         emit MessageReceived(message);
