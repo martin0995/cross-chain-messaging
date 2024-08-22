@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 import "lib/wormhole-solidity-sdk/src/interfaces/IWormholeRelayer.sol";
 import "lib/wormhole-solidity-sdk/src/interfaces/IWormholeReceiver.sol";
 
