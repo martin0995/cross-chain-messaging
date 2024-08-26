@@ -21,26 +21,46 @@ PRIVATE_KEY=0x...
 
 ### Quickstart
 
-1. Clone the repository:
+**1. Clone the repository:**
 
 ```bash
 git clone 
 ```
 
-2. Install dependencies:
+**2. Install dependencies:**
 
 ```bash
 npm install
 forge install
 ```
 
-3. Compile contracts:
+**3. Compile contracts:**
 
 ```bash
 forge build
 ```
 
-4. Deploy contracts:
+**4. Run Tests:**
+
+Before deploying contracts, it's recommended to run the tests to ensure everything is functioning correctly. Run:
+
+```bash
+forge test
+```
+
+The expected output should include passing results for all test cases, with outputs similar to:
+
+```
+Ran 3 tests for test/CrossChainMessagingTest.sol:CrossChainMessagingTest
+[PASS] testDeployment() (gas: 13011)
+[PASS] testReceiveMessage() (gas: 18114)
+[PASS] testSendMessage() (gas: 21029)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 7.53ms (3.55ms CPU time)
+
+Ran 1 test suite in 112.75ms (7.53ms CPU time): 3 tests passed, 0 failed, 0 skipped (3 total tests)
+```
+
+**5. Deploy contracts:**
 
 **Deploy the sender contract on Avalanche Fuji:**
 
@@ -56,7 +76,7 @@ npm run deploy:receiver
 ```
 - You may see the respective contract deployed on the Alfajores Explorer: https://explorer.celo.org/alfajores/
 
-5. Send Cross-Chain Message:
+**6. Send Cross-Chain Message:**
 
 Send a message from Avalanche Fuji to Celo Alfajores:
 
@@ -69,15 +89,16 @@ npm run send-message
 
 The project uses two smart contracts:
 
-- **MessageSender (Avalanche Fuji)** - Sends a message to the target chain.
-- **MessageReceiver (Celo Alfajores)** - Receives the message and logs it.
+- **`MessageSender.sol` (Avalanche Fuji)** - sends a message to the target chain
+- **`MessageReceiver.sol` (Celo Alfajores)** - receives the message and logs it
 
 The deployment scripts automatically store the contract addresses in `deployedContracts.json` for easy reuse.
 
 ### Project Structure
 
-- **script/** - Deployment and interaction scripts
-- **deploy-config/** - Chain configuration and deployed contract addresses
-- **out/** - Compiled contract artifacts
-- **lib/** - External dependencies (auto-managed by Foundry)
+- **script/** - deployment and interaction scripts
+- **deploy-config/** - chain configuration and deployed contract addresses
+- **out/** - compiled contract artifacts
+- **lib/** - external dependencies (auto-managed by Foundry)
+- **test/** - unit tests for smart contracts
 
