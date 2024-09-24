@@ -83,7 +83,7 @@ npm run deploy:receiver
 Send a message from Avalanche Fuji to Celo Alfajores:
 
 ```bash
-npm run send-message
+npm run send:message
 ```
 - You may check the transaction status on the [Wormhole Explorer](https://wormholescan.io/#/?network=TESTNET)
 
