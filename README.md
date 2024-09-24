@@ -19,7 +19,7 @@ This project demonstrates how to send and receive _cross-chain messages_ using t
 PRIVATE_KEY=0x...
 ```
 
-- The `chains.json` file requires the details of the source and target chains. For a complete list of contract addresses needed to populate this file, visit the [contract addresses page](https://wormhole.com/docs/build/reference/) from the Wormhole Documentation
+> The `chains.json` file requires the details of the source and target chains. For a complete list of contract addresses needed to populate this file, visit the [contract addresses page](https://wormhole.com/docs/build/reference/) from the Wormhole Documentation. In this project, we are using Avalanche and Celo as default.
 
 ### Quickstart
 
